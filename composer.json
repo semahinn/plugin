@@ -18,5 +18,7 @@
         "doctrine/annotations": "^1.8",
         "snr/psr16cache": "dev-main",
         "symfony/event-dispatcher": "^5.4"
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

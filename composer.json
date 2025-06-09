@@ -1,0 +1,22 @@
+{
+    "name": "snr/plugin",
+    "description": "Реализует систему типов (плагинов), классы которых помечаются аннотациями или атрибутами (вдохновлено Plugin API Drupal 8)",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Snr\\Plugin\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Semahin Nikita",
+            "email": "semahinnikita@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.3",
+        "doctrine/annotations": "^1.8",
+        "snr/psr16cache": "dev-main",
+        "symfony/event-dispatcher": "^5.4"
+    }
+}

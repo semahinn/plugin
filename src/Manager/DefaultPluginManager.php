@@ -9,16 +9,16 @@ use Snr\Plugin\Discovery\DiscoveryCachedTrait;
 use Snr\Plugin\Event\AlterPluginDefinitionsEvent;
 use Snr\Plugin\Factory\DefaultFactory;
 use Snr\Plugin\Factory\FactoryInterface;
-use Symfony\Component\EventDispatcher\EventDispatcher;
 
 /**
  * Мэнеджер плагинов по-умолчанию
  * Может как использоваться напрямую, так и являться
  * отправной точкой для создания своих реализаиий PluginManagerInterface
  */
-class DefaultPluginManager implements PluginManagerInterface {
+class DefaultPluginManager implements PluginManagerInterface, ByPluginClassInterface {
   
   use DiscoveryCachedTrait;
+  use ByPluginClassTrait;
   
   /**
    * @var string
@@ -74,14 +74,14 @@ class DefaultPluginManager implements PluginManagerInterface {
   /**
    * {@inheritdoc}
    */
-  public function getInstanceInterface() {
+  public function getInstanceInterface(): string {
     return $this->pluginInterface;
   }
   
   /**
    * @return DiscoveryInterface
    */
-  protected function getDiscovery(): \Snr\Plugin\Discovery\DiscoveryInterface {
+  protected function getDiscovery() {
     if (!$this->discovery) {
       $this->discovery = new AnnotatedClassDiscovery($this->subdir, $this->namespaces, $this->pluginDefinitionAnnotationName);
     }
@@ -91,7 +91,7 @@ class DefaultPluginManager implements PluginManagerInterface {
   /**
    * @return FactoryInterface
    */
-  protected function getFactory(): \Snr\Plugin\Factory\FactoryInterface {
+  protected function getFactory() {
     if (!$this->factory) {
       $this->factory = new DefaultFactory($this, $this->pluginInterface);
     }
@@ -131,7 +131,17 @@ class DefaultPluginManager implements PluginManagerInterface {
     return $this->getDiscovery()->getDefinitions();
   }
   
+  /**
+   * Можно установить любой EventDispatcher
+   * Необходим для вызова событий (@see AlterPluginDefinitionsEvent),
+   * возникающих в процессе поиска определений плагинов
+   *
+   * @param EventDispatcherInterface $dispatcher
+   *
+   * @return void
+   */
   public function setEventDispatcher(EventDispatcherInterface $dispatcher) {
     $this->eventDispatcher = $dispatcher;
   }
+  
 }

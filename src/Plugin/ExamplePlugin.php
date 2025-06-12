@@ -16,6 +16,7 @@ class ExamplePlugin implements ExamplePluginInterface
    * @var string
    */
   protected $phrase;
+  
   public function __construct(array $configuration, string $plugin_id, array $plugin_definition) {
     if (!empty($configuration['phrase']) && is_string($configuration['phrase'])) {
       $this->phrase = $configuration['phrase'];
@@ -25,7 +26,7 @@ class ExamplePlugin implements ExamplePluginInterface
   /**
    * {@inheritdoc}
    */
-  public static function getPluginManager(): PluginManagerInterface {
+  public static function getPluginManager() {
     // TODO: Implement getPluginManager() method.
   }
 }

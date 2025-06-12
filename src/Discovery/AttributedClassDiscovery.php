@@ -1,9 +1,6 @@
 <?php
 
-namespace Snr\Annotation\Discovery;
-
-use Snr\Plugin\Discovery\DiscoveryInterface;
-use Snr\Plugin\Discovery\DiscoveryTrait;
+namespace Snr\Plugin\Discovery;
 
 /**
  * Здесь ОПРЕДЕЛЕНИЕ ПЛАГИНА описывается

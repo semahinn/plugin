@@ -9,5 +9,5 @@ interface PluginableInstanceInterface {
   /**
    * @return PluginManagerInterface
    */
-  public static function getPluginManager() : PluginManagerInterface;
+  public static function getPluginManager();
 }

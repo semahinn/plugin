@@ -30,6 +30,6 @@ interface FactoryInterface {
    *
    * @return string
    */
-  public function getInstanceInterface();
+  public function getInstanceInterface(): string;
 
 }

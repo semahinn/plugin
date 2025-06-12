@@ -2,7 +2,7 @@
 
 namespace Snr\Plugin\Event;
 
-use Symfony\Contracts\EventDispatcher\Event;
+use Symfony\Component\EventDispatcher\Event;
 
 class AlterPluginDefinitionsEvent extends Event {
   

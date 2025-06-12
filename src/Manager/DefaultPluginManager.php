@@ -2,7 +2,7 @@
 
 namespace Snr\Plugin\Manager;
 
-use Psr\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Snr\Plugin\Discovery\AnnotatedClassDiscovery;
 use Snr\Plugin\Discovery\DiscoveryInterface;
 use Snr\Plugin\Discovery\DiscoveryCachedTrait;

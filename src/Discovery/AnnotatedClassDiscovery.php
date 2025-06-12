@@ -5,7 +5,6 @@ namespace Snr\Plugin\Discovery;
 use Doctrine\Common\Annotations\SimpleAnnotationReader;
 use ReflectionClass;
 use Doctrine\Common\Annotations\Reader;
-use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use Snr\Psr16cache\FileCacheFactory;
 use Snr\Psr16cache\FileCacheInterface;

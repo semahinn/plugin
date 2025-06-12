@@ -2,8 +2,6 @@
 
 namespace Snr\Plugin\Discovery;
 
-use Snr\Annotation\Discovery\AttributedClassDiscovery;
-
 /**
  * Описывает минимальный набор методов для получения ОПРЕДЕЛЕНИЙ (ПЛАГИНОВ)
  *

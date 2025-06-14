@@ -10,8 +10,8 @@ use Snr\Plugin\Manager\PluginManagerInterface;
  *   label = "Example Plugin",
  * )
  */
-class ExamplePlugin implements ExamplePluginInterface
-{
+class ExamplePlugin implements ExamplePluginInterface {
+  
   /**
    * @var string
    */

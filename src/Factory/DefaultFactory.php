@@ -82,7 +82,7 @@ class DefaultFactory implements FactoryInterface {
   /**
    * {@inheritdoc}
    */
-  public function getInstanceInterface(): string {
+  public function getInstanceInterface() {
     return $this->interface;
   }
 }

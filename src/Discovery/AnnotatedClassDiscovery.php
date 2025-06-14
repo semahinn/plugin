@@ -103,7 +103,7 @@ class AnnotatedClassDiscovery implements DiscoveryInterface {
   /**
    * {@inheritdoc}
    */
-  public function getDefinitions(): array {
+  public function getDefinitions() {
     $definitions = [];
 
     $reader = $this->getAnnotationReader();
@@ -159,7 +159,7 @@ class AnnotatedClassDiscovery implements DiscoveryInterface {
    *
    * @return string[]
    */
-  protected function getPluginNamespaces(): array {
+  protected function getPluginNamespaces() {
     $plugin_namespaces = [];
     if ($this->namespaceSuffix) {
       // Пример:

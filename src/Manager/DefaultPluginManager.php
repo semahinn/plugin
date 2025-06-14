@@ -11,7 +11,7 @@ use Snr\Plugin\Factory\DefaultFactory;
 use Snr\Plugin\Factory\FactoryInterface;
 
 /**
- * Мэнеджер плагинов по-умолчанию
+ * Менеджер плагинов по-умолчанию
  * Может как использоваться напрямую, так и являться
  * отправной точкой для создания своих реализаиий PluginManagerInterface
  */
@@ -74,7 +74,7 @@ class DefaultPluginManager implements PluginManagerInterface, ByPluginClassInter
   /**
    * {@inheritdoc}
    */
-  public function getInstanceInterface(): string {
+  public function getInstanceInterface() {
     return $this->pluginInterface;
   }
   
@@ -108,7 +108,7 @@ class DefaultPluginManager implements PluginManagerInterface, ByPluginClassInter
   /**
    * {@inheritdoc}
    */
-  public function getDefinitions(): array {
+  public function getDefinitions() {
     // TODO: Добавить взаимодействия с psr16 кэшем
     // (Например, это могут быть специальные функции getFromCache и setInCache)
     

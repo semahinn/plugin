@@ -14,7 +14,7 @@ trait DiscoveryTrait {
   /**
    * {@inheritdoc}
    */
-  public function getDefinition(string $plugin_id, $exception_on_invalid = TRUE): ?array {
+  public function getDefinition(string $plugin_id, $exception_on_invalid = TRUE) {
     $definitions = $this->getDefinitions();
     return $this->doGetDefinition($definitions, $plugin_id, $exception_on_invalid);
   }
@@ -50,7 +50,7 @@ trait DiscoveryTrait {
   /**
    * {@inheritdoc}
    */
-  public function hasDefinition(string $plugin_id): bool {
+  public function hasDefinition(string $plugin_id) {
     return (bool) $this->getDefinition($plugin_id, FALSE);
   }
 }

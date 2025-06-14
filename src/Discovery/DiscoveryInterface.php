@@ -31,14 +31,14 @@ interface DiscoveryInterface {
    *
    * @throws
    */
-  public function getDefinition(string $plugin_id, bool $exception_on_invalid = TRUE): ?array;
+  public function getDefinition(string $plugin_id, bool $exception_on_invalid = TRUE);
 
   /**
    * Возвращает все определения плагинов
    *
    * @return array
    */
-  public function getDefinitions(): array;
+  public function getDefinitions();
 
   /**
    * Проверяет, существует ли плагин
@@ -49,5 +49,5 @@ interface DiscoveryInterface {
    *
    * @return bool
    */
-  public function hasDefinition(string $plugin_id): bool;
+  public function hasDefinition(string $plugin_id);
 }

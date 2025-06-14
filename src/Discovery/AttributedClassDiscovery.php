@@ -13,7 +13,7 @@ class AttributedClassDiscovery implements DiscoveryInterface {
   /**
    * {@inheritdoc}
    */
-  public function getDefinitions(): array {
+  public function getDefinitions() {
     // TODO: Implement getDefinitions() method.
   }
   

@@ -16,7 +16,7 @@ trait DiscoveryCachedTrait {
   /**
    * {@inheritdoc}
    */
-  public function getDefinition(string $plugin_id, bool $exception_on_invalid = TRUE): ?array {
+  public function getDefinition(string $plugin_id, bool $exception_on_invalid = TRUE) {
     if (!isset($this->definitions)) {
       $this->getDefinitions();
     }

@@ -8,8 +8,11 @@ use Snr\Plugin\Factory\FactoryInterface;
 /**
  * Является универсальной точкой доступа к управлению плагинами,
  * объединяя в себе две обязательных для этого задачи:
- * 1. (@see DiscoveryInterface) - реализует способ нахождения определений плагинов
- * 2. (@see FactoryInterface) - реализует способ создания экземпляров плагинов
+ * 1. Реализует способ нахождения определений плагинов (DiscoveryInterface)
+ * 2. Реализует способ создания экземпляров плагинов (FactoryInterface)
+ *
+ * @see DiscoveryInterface
+ * @see FactoryInterface
  */
 interface PluginManagerInterface extends DiscoveryInterface, FactoryInterface {
 

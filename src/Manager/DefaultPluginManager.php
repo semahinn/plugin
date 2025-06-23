@@ -2,6 +2,8 @@
 
 namespace Snr\Plugin\Manager;
 
+use Snr\Plugin\Plugin;
+use Snr\Plugin\Plugin\PluginableInstanceInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Snr\Plugin\Discovery\AnnotatedClassDiscovery;
 use Snr\Plugin\Discovery\DiscoveryInterface;
@@ -57,7 +59,23 @@ class DefaultPluginManager implements PluginManagerInterface, ByPluginClassInter
    */
   protected $eventDispatcher;
   
-  public function __construct(string $subdir, array $namespaces, string $plugin_interface, $plugin_definition_annotation_name = 'Snr\Plugin\Plugin') {
+  /**
+   * @param array $namespaces
+   *  Пространства имён, в которых будет осуществляться поиск
+   *
+   * @param string $subdir
+   *  Папка с классами плагинов
+   *
+   * @param string $plugin_interface
+   *  Интерфейс, который должны реализовывать классы плагинов
+   *
+   * @param string $plugin_definition_annotation_name
+   *  Класс, описывающий свойства плагина (помечен как "@Annotation")
+   */
+  public function __construct(string $subdir = 'Plugin',
+                              array $namespaces = [],
+                              string $plugin_interface = PluginableInstanceInterface::class,
+                              string $plugin_definition_annotation_name = Plugin::class) {
     $this->subdir = $subdir;
     $this->namespaces = $namespaces;
     $this->pluginDefinitionAnnotationName = $plugin_definition_annotation_name;

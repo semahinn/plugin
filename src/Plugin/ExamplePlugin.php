@@ -2,8 +2,6 @@
 
 namespace Snr\Plugin\Plugin;
 
-use Snr\Plugin\Manager\PluginManagerInterface;
-
 /**
  * @Plugin(
  *   id = "example_plugin",

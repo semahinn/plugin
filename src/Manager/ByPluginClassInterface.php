@@ -6,8 +6,10 @@ interface ByPluginClassInterface {
   
   /**
    * @param string $type
+   *  Идентификатор определения плагина
    *
    * @return string
+   *  Возвращает класс этого плагина
    */
   public function getPluginClass(string $type);
   

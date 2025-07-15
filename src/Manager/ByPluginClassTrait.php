@@ -4,9 +4,6 @@ namespace Snr\Plugin\Manager;
 
 trait ByPluginClassTrait {
 
-  // Методы getPluginClass и getDefinitionByPluginClass давно напрашивались
-  // на выделение их в отдельный трейт
-
   /**
    * {@inheritdoc}
    */

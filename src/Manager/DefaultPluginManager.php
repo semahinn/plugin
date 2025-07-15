@@ -2,6 +2,7 @@
 
 namespace Snr\Plugin\Manager;
 
+use Psr\Container\ContainerInterface;
 use Snr\Plugin\Plugin;
 use Snr\Plugin\Plugin\PluginableInstanceInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -17,7 +18,7 @@ use Snr\Plugin\Factory\FactoryInterface;
  * Может как использоваться напрямую, так и являться
  * отправной точкой для создания своих реализаиий PluginManagerInterface
  */
-class DefaultPluginManager implements PluginManagerInterface, ByPluginClassInterface {
+class DefaultPluginManager implements PluginManagerInterface, ContainerAwarePluginManagerInterface, ByPluginClassInterface {
   
   use DiscoveryCachedTrait;
   use ByPluginClassTrait;
@@ -55,9 +56,9 @@ class DefaultPluginManager implements PluginManagerInterface, ByPluginClassInter
   protected $factory;
   
   /**
-   * @var EventDispatcherInterface
+   * @var ContainerInterface
    */
-  protected $eventDispatcher;
+  protected $container;
   
   /**
    * @param array $namespaces
@@ -145,21 +146,30 @@ class DefaultPluginManager implements PluginManagerInterface, ByPluginClassInter
   protected function findDefinitions() {
     $definitions = $this->getDiscovery()->getDefinitions();
     $event = new AlterPluginDefinitionsEvent($definitions);
-    $this->eventDispatcher->dispatch($event);
+    $this->getEventDispatcher()->dispatch($event);
     return $this->getDiscovery()->getDefinitions();
   }
-  
+
   /**
-   * Можно установить любой EventDispatcher
-   * Необходим для вызова событий (@see AlterPluginDefinitionsEvent),
-   * возникающих в процессе поиска определений плагинов
-   *
-   * @param EventDispatcherInterface $dispatcher
-   *
-   * @return void
+   * {@inheritdoc}
    */
-  public function setEventDispatcher(EventDispatcherInterface $dispatcher) {
-    $this->eventDispatcher = $dispatcher;
+  public function getContainer() {
+    return $this->container;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setContainer(ContainerInterface $container) {
+    $this->container = $container;
+    return $this;
+  }
+
+  /**
+   * @return EventDispatcherInterface
+   */
+  public function getEventDispatcher() {
+    return $this->container->get('event_dispatcher');
   }
   
 }

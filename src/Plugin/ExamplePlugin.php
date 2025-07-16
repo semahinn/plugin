@@ -2,7 +2,6 @@
 
 namespace Snr\Plugin\Plugin;
 
-use Psr\Container\ContainerInterface;
 use Snr\Plugin\MockKernel;
 
 /**
@@ -11,7 +10,7 @@ use Snr\Plugin\MockKernel;
  *   label = "Example Plugin",
  * )
  */
-class ExamplePlugin implements ExamplePluginInterface {
+final class ExamplePlugin implements ExamplePluginInterface {
   
   /**
    * @var string

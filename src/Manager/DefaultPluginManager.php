@@ -2,7 +2,6 @@
 
 namespace Snr\Plugin\Manager;
 
-use Snr\Plugin\MockKernel;
 use Snr\Plugin\Plugin;
 use Snr\Plugin\Plugin\PluginableInstanceInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -18,7 +17,7 @@ use Snr\Plugin\Factory\FactoryInterface;
  * Может как использоваться напрямую, так и являться
  * отправной точкой для создания своих реализаиий PluginManagerInterface
  */
-class DefaultPluginManager implements PluginManagerInterface, ByPluginClassInterface {
+abstract class DefaultPluginManager implements PluginManagerInterface, ByPluginClassInterface {
   
   use DiscoveryCachedTrait;
   use ByPluginClassTrait;
@@ -148,8 +147,6 @@ class DefaultPluginManager implements PluginManagerInterface, ByPluginClassInter
   /**
    * @return EventDispatcherInterface
    */
-  public function getEventDispatcher() {
-    return MockKernel::getContainer()->get('event_dispatcher');
-  }
+  public abstract function getEventDispatcher();
   
 }

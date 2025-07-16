@@ -3,11 +3,11 @@
 namespace Snr\Plugin\Tests;
 
 use PHPUnit\Framework\TestCase;
+use Snr\Plugin\Manager\MockPluginManager;
 use Snr\Plugin\MockKernel;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Snr\Plugin\Adapter\SymfonyContainerAdapter;
-use Snr\Plugin\Manager\DefaultPluginManager;
 use Snr\Plugin\Plugin\ExamplePluginInterface;
 
 class PluginManagerTest extends TestCase {
@@ -23,7 +23,7 @@ class PluginManagerTest extends TestCase {
     $container = new ContainerBuilder();
     $container->register('event_dispatcher', new EventDispatcher());
 
-    $plugin_manager = new DefaultPluginManager('Plugin', $namespaces, ExamplePluginInterface::class);
+    $plugin_manager = new MockPluginManager('Plugin', $namespaces, ExamplePluginInterface::class);
     $container->register('plugin.manager.default', $plugin_manager);
 
     $container->compile();

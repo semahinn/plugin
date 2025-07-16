@@ -7,6 +7,11 @@
             "Snr\\Plugin\\": "src/"
         }
     },
+	"autoload-dev": {
+        "psr-4": {
+            "Snr\\Plugin\\Tests\\": "tests"
+        }
+    },
     "authors": [
         {
             "name": "Semahin Nikita",
@@ -16,10 +21,14 @@
     "require": {
         "php": ">=7.3",
         "doctrine/annotations": "^1.4",
-        "snr/psr16cache": "dev-main",
-        "symfony/event-dispatcher": "~3.4.0",
-        "psr/container": "^2.0"
+        "psr/container": "^2.0",
+        "snr/psr16cache": "dev-main"
     },
-    "minimum-stability": "dev",
+    "require-dev": {
+        "phpunit/phpunit": "^9.6",
+        "symfony/dependency-injection": "^3.2",
+        "symfony/event-dispatcher": "^3.2"
+    },
+	"minimum-stability": "dev",
     "prefer-stable": true
 }

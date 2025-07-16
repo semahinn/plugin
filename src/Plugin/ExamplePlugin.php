@@ -2,6 +2,9 @@
 
 namespace Snr\Plugin\Plugin;
 
+use Psr\Container\ContainerInterface;
+use Snr\Plugin\MockKernel;
+
 /**
  * @Plugin(
  *   id = "example_plugin",
@@ -13,7 +16,7 @@ class ExamplePlugin implements ExamplePluginInterface {
   /**
    * @var string
    */
-  protected $phrase;
+  public $phrase;
   
   public function __construct(array $configuration, string $plugin_id, array $plugin_definition) {
     if (!empty($configuration['phrase']) && is_string($configuration['phrase'])) {
@@ -25,6 +28,6 @@ class ExamplePlugin implements ExamplePluginInterface {
    * {@inheritdoc}
    */
   public static function getPluginManager() {
-    // TODO: Implement getPluginManager() method.
+    return MockKernel::getContainer()->get('plugin.manager.default');
   }
 }

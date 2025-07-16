@@ -2,7 +2,7 @@
 
 namespace Snr\Plugin\Manager;
 
-use Psr\Container\ContainerInterface;
+use Snr\Plugin\MockKernel;
 use Snr\Plugin\Plugin;
 use Snr\Plugin\Plugin\PluginableInstanceInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -18,7 +18,7 @@ use Snr\Plugin\Factory\FactoryInterface;
  * Может как использоваться напрямую, так и являться
  * отправной точкой для создания своих реализаиий PluginManagerInterface
  */
-class DefaultPluginManager implements PluginManagerInterface, ContainerAwarePluginManagerInterface, ByPluginClassInterface {
+class DefaultPluginManager implements PluginManagerInterface, ByPluginClassInterface {
   
   use DiscoveryCachedTrait;
   use ByPluginClassTrait;
@@ -54,11 +54,6 @@ class DefaultPluginManager implements PluginManagerInterface, ContainerAwarePlug
    * @var FactoryInterface
    */
   protected $factory;
-  
-  /**
-   * @var ContainerInterface
-   */
-  protected $container;
   
   /**
    * @param array $namespaces
@@ -146,30 +141,15 @@ class DefaultPluginManager implements PluginManagerInterface, ContainerAwarePlug
   protected function findDefinitions() {
     $definitions = $this->getDiscovery()->getDefinitions();
     $event = new AlterPluginDefinitionsEvent($definitions);
-    $this->getEventDispatcher()->dispatch($event);
+    $this->getEventDispatcher()->dispatch($event::EVENT_NAME, $event);
     return $this->getDiscovery()->getDefinitions();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getContainer() {
-    return $this->container;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function setContainer(ContainerInterface $container) {
-    $this->container = $container;
-    return $this;
   }
 
   /**
    * @return EventDispatcherInterface
    */
   public function getEventDispatcher() {
-    return $this->container->get('event_dispatcher');
+    return MockKernel::getContainer()->get('event_dispatcher');
   }
   
 }

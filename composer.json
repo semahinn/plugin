@@ -22,13 +22,11 @@
         "php": ">=7.3",
         "doctrine/annotations": "^1.4",
         "psr/container": "^2.0",
-        "snr/psr16cache": "dev-main"
+        "snr/psr16cache": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.6",
         "symfony/dependency-injection": "^3.2",
         "symfony/event-dispatcher": "^3.2"
-    },
-	"minimum-stability": "dev",
-    "prefer-stable": true
+    }
 }

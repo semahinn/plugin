@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "12f0ed3e9bf016a855c29ab50be58834",
+    "content-hash": "960fb71d88fa62da9b85fbb2c2cd5488",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -363,7 +363,7 @@
         },
         {
             "name": "snr/psr16cache",
-            "version": "dev-main",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/semahinn/psr16cache.git",
@@ -379,13 +379,13 @@
                 "php": ">=7.3",
                 "psr/simple-cache": "^1.0"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "Snr\\Psr16cache\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "authors": [
                 {
                     "name": "Nikita Semakhin"
@@ -393,8 +393,8 @@
             ],
             "description": "some useful psr16cache (simple cache) implementations",
             "support": {
-                "source": "https://github.com/semahinn/psr16cache/tree/main",
-                "issues": "https://github.com/semahinn/psr16cache/issues"
+                "issues": "https://github.com/semahinn/psr16cache/issues",
+                "source": "https://github.com/semahinn/psr16cache/tree/1.0.0"
             },
             "time": "2025-06-02T21:32:32+00:00"
         }
@@ -2279,9 +2279,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "snr/psr16cache": 20
-    },
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

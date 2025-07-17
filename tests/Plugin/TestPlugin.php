@@ -1,16 +1,16 @@
 <?php
 
-namespace Snr\Plugin\Plugin;
+namespace Snr\Plugin\Tests\Plugin;
 
-use Snr\Plugin\MockKernel;
+use Snr\Plugin\Tests\TestKernel;
 
 /**
  * @Plugin(
- *   id = "example_plugin",
- *   label = "Example Plugin",
+ *   id = "test_plugin",
+ *   label = "Test Plugin",
  * )
  */
-final class ExamplePlugin implements ExamplePluginInterface {
+final class TestPlugin implements TestPluginInterface {
   
   /**
    * @var string
@@ -26,7 +26,8 @@ final class ExamplePlugin implements ExamplePluginInterface {
   /**
    * {@inheritdoc}
    */
-  public static function getPluginManager() {
-    return MockKernel::getContainer()->get('plugin.manager.default');
+  public function getPluginManager() {
+    return TestKernel::getContainer()->get('plugin.manager.default');
   }
+
 }

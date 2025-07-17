@@ -3,12 +3,12 @@
 namespace Snr\Plugin\Tests;
 
 use PHPUnit\Framework\TestCase;
-use Snr\Plugin\Manager\MockPluginManager;
-use Snr\Plugin\MockKernel;
+use Snr\Plugin\Tests\Plugin\TestPluginInterface;
+use Snr\Plugin\Adapter\SymfonyContainerAdapter;
+use Snr\Plugin\Tests\TestKernel;
+use Snr\Plugin\Tests\Manager\TestPluginManager;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\EventDispatcher\EventDispatcher;
-use Snr\Plugin\Adapter\SymfonyContainerAdapter;
-use Snr\Plugin\Plugin\ExamplePluginInterface;
 
 class PluginManagerTest extends TestCase {
 
@@ -17,19 +17,19 @@ class PluginManagerTest extends TestCase {
     $root = dirname(__FILE__, 2);
     require_once "$root/vendor/autoload.php";
     $namespaces = [
-      "Snr\Plugin" => "$root/src"
+      "Snr\Plugin\Tests" => "$root/tests"
     ];
 
     $container = new ContainerBuilder();
     $container->register('event_dispatcher', new EventDispatcher());
 
-    $plugin_manager = new MockPluginManager('Plugin', $namespaces, ExamplePluginInterface::class);
+    $plugin_manager = new TestPluginManager('Plugin', $namespaces, TestPluginInterface::class);
     $container->register('plugin.manager.default', $plugin_manager);
 
     $container->compile();
 
     $adapter = new SymfonyContainerAdapter($container);
-    MockKernel::setContainer($adapter);
+    TestKernel::setContainer($adapter);
 
     $instances = [];
     $definitions = $plugin_manager->getDefinitions();
@@ -41,8 +41,8 @@ class PluginManagerTest extends TestCase {
     $instance = current($instances);
     $plugin_manager_from_instance = $instance->getPluginManager();
 
-    $this->assertInstanceOf(ExamplePluginInterface::class, $instance,
-      "Экземпляр плагина должен быть " . ExamplePluginInterface::class);
+    $this->assertInstanceOf(TestPluginInterface::class, $instance,
+      "Экземпляр плагина должен быть " . TestPluginInterface::class);
     $this->assertObjectHasProperty('phrase', $instance,
       "Экземпляр плагина должен иметь свойство 'phrase'");
     $this->assertEquals('Hello world', $instance->phrase,

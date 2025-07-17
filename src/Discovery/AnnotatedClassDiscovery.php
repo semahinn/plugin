@@ -19,11 +19,11 @@ use Snr\Psr16cache\FileCacheInterface;
  * КЛАСС АННОТАЦИИ - класс (Например, \Snr\Plugin\Plugin),
  * в котором описываются все свойства (id, label и т.д.) ОПРЕДЕЛЕНИЯ ПЛАГИНА
  *
- * КЛАСС ПЛАГИНА - класс (Например, \Snr\Plugin\Plugin\ExamplePlugin),
+ * КЛАСС ПЛАГИНА - класс (Например, \Snr\Plugin\Tests\Plugin\MockPlugin),
  * который был найден, потому что был отмечен аннотацией
  *
  * @see \Snr\Plugin\Plugin
- * @see \Snr\Plugin\Plugin\ExamplePlugin
+ * @see \Snr\Plugin\Tests\Plugin\MockPlugin
  */
 class AnnotatedClassDiscovery implements DiscoveryInterface {
 

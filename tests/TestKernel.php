@@ -1,10 +1,10 @@
 <?php
 
-namespace Snr\Plugin;
+namespace Snr\Plugin\Tests;
 
 use Psr\Container\ContainerInterface;
 
-class MockKernel {
+class TestKernel {
 
   /**
    * @var ContainerInterface

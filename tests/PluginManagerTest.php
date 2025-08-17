@@ -5,7 +5,6 @@ namespace Snr\Plugin\Tests;
 use PHPUnit\Framework\TestCase;
 use Snr\Plugin\Tests\Plugin\TestPluginInterface;
 use Snr\Plugin\Adapter\SymfonyContainerAdapter;
-use Snr\Plugin\Tests\TestKernel;
 use Snr\Plugin\Tests\Manager\TestPluginManager;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\EventDispatcher\EventDispatcher;
@@ -23,7 +22,7 @@ class PluginManagerTest extends TestCase {
     $container = new ContainerBuilder();
     $container->register('event_dispatcher', new EventDispatcher());
 
-    $plugin_manager = new TestPluginManager('Plugin', $namespaces, TestPluginInterface::class);
+    $plugin_manager = new TestPluginManager($namespaces);
     $container->register('plugin.manager.default', $plugin_manager);
 
     $container->compile();

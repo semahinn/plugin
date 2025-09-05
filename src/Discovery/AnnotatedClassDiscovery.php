@@ -134,12 +134,15 @@ class AnnotatedClassDiscovery implements DiscoveryInterface {
             $reflection_class = new ReflectionClass($class);
 
             if ($annotation = $reader->getClassAnnotation($reflection_class, $this->pluginDefinitionAnnotationName)) {
+              $annotation_class = new ReflectionClass($this->pluginDefinitionAnnotationName);
+              $annotation_property_names = array_column($annotation_class->getProperties(), 'name');
+
               $id = $annotation->id;
-              $values = [
-                'id' => $id,
-                'label' => $annotation->label,
-                'class' => $class
-              ];
+              foreach ($annotation_property_names as $name) {
+                $values[$name] = $annotation->$name;
+              }
+              $values['class'] = $class;
+
               $definitions[$id] = $values;
               $this->fileCache->set($fileinfo->getPathName(), ['id' => $id, 'content' => serialize($values)]);
             }
